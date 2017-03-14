@@ -16,6 +16,7 @@ function downloadImageByURL(url, filePath) {
 }
 
 function getRepoContributors(repoOwner, repoName, cb) {
+
   var requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
   var options = {
     'url': requestURL,
@@ -34,9 +35,12 @@ function getRepoContributors(repoOwner, repoName, cb) {
   });
 };
 
-getRepoContributors(owner, name, function(err, result){
-     console.log('Errors:', err);
-     console.log('Result:', result);
+if (owner && name){
+  getRepoContributors(owner, name, function(err, result){
+  console.log('Errors:', err);
+  console.log('Result:', result);
 });
-
+} else {
+  console.log("get up on outta here with my Eyeholes");
+}
 
